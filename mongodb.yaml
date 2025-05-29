@@ -2,18 +2,18 @@
   become: yes
   hosts: mongodb
   task:
-    - name: copy mongodb repo
-      ansible.builtin.copy:
-        src: mongo.repo
-        dest: etc/yum.repos.d/mongo.repo
+  - name: copy mongodb repo
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: etc/yum.repos.d/mongo.repo
 
-    - name: Install mongodb server
-      ansible.builtin.dnf:
-        name: mongodb-org
-        state: present
+  - name: Install mongodb server
+    ansible.builtin.dnf:
+      name: mongodb-org
+      state: present
 
-    - name: enable & start mongodb service
-      ansible.builtin.service:
-        name: enable server
-        state: started
-        enabled: yes
+  - name: enable & start mongodb service
+    ansible.builtin.service:
+      name: enable server
+      state: started
+      enabled: yes
