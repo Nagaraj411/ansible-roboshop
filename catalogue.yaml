@@ -37,7 +37,7 @@
       dest: /app
       remote_src: yes
 
-  - name: install nodejs dependencies
+  - name: install dependencies
     ansible.general.npm:
     path: /app
 
