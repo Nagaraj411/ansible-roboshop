@@ -1,6 +1,5 @@
 - name: configuring catalogue server
-  hosts: local
-  connection: local
+  hosts: catalogue
   become: yes
   tasks:
   - name: Disable the default nodejs module
@@ -50,11 +49,11 @@
     ansible.builtin.systemd_service:
      daemon_reload: true
 
-  # - name: start and enable catalogue
-  #   ansible.builtin.service:
-  #     name: catalogue
-  #     state: started
-  #     enabled: yes
+  - name: start and enable catalogue
+    ansible.builtin.service:
+      name: catalogue
+      state: started
+      enabled: yes
 
   - name: copy mongo repo
     ansible.builtin.copy:
