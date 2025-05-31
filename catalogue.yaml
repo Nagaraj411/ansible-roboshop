@@ -1,5 +1,6 @@
 - name: configuring catalogue server
-  hosts: catalogue
+  hosts: local
+  connection: local
   become: yes
   tasks:
   - name: Disable the default nodejs module
@@ -50,7 +51,7 @@
       daemon_reload: true
 
   - name: start and enable catalogue
-    ansible.builtin.service: # start the catalogue service and enable
+    ansible.builtin.service: # start the catalogue service and enable line 46 # it to start on boot
       name: catalogue
       state: started
       enabled: yes
