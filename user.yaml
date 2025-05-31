@@ -39,7 +39,7 @@
 
   - name: install dependencies
     community.general.npm:  # install the npm required node.js dependencies for the application
-    path: /app
+      path: /app
 
   - name: Copy user service file
     ansible.builtin.copy:
