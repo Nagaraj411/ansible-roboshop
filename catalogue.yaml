@@ -47,6 +47,5 @@
       dest: /etc/systemd/system/catalogue.services
 
   - name: daemon reload
-    ansible.builtin.daemon:
-      name: daemon-reload
-      state: reloaded
+    ansible.builtin.systemd_service:
+     daemon_reload: true
