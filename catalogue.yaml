@@ -43,6 +43,6 @@
 
   - name: Copy catalogue service file
     ansible.builtin.copy:
-      src: catalogue service
+      src: catalogue.service
       dest: /etc/systemd/system/catalogue.services
      
