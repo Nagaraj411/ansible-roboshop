@@ -24,7 +24,7 @@
       name: roboshop
       shell: /sbin/nologin
       home: /app
-      system: true
+      system: yes
 
   - name: download user code
     ansible.builtin.get_url:
