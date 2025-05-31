@@ -23,8 +23,8 @@
     ansible.builtin.user: # create a system user for the application
       name: roboshop
       shell: /sbin/nologin
-      system: true
       home: /app
+      system: true
 
   - name: download catalogue code
     ansible.builtin.get_url: # download the catalogue code from the remote repository
