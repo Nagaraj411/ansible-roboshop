@@ -54,7 +54,7 @@
     ansible.builtin.service: # start and enable the catalogue service
       name: catalogue
       state: started
-      enabled: true
+      enabled: yes
 
   - name: copy mongo repo
     ansible.builtin.copy: # copy the MongoDB repository file to the yum repository directory
