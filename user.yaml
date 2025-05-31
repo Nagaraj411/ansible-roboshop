@@ -1,0 +1,28 @@
+- name: configuring catalogue server
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: Disable the default nodejs module
+    ansible.builtin.command: dnf module disable nodejs -y
+
+  - name: enable nodejs
+    ansible.builtin.command: dnf module enable nodejs:20 -y
+
+  - name: Install nodejs
+    ansible.builtin.dnf:
+    name: nodejs
+    state: present
+
+  - name: create app directory
+    ansible.builtin.file:  # create a directory for the application
+    path: /app
+    state: directory
+
+  - name: add system user
+    ansible.builtin.user: # create a system user for the application
+     name: roboshop
+     shell: /sbin/nologin
+     home: /app
+     system: true
+     
