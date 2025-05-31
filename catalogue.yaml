@@ -35,7 +35,7 @@
     ansible.builtin.unarchive:
       src: /tmp/catalogue.zip
       dest: /app
-      
+      remote_src: yes
 
   - name: install dependencies
     community.general.npm:
@@ -45,4 +45,8 @@
     ansible.builtin.copy:
       src: catalogue.service
       dest: /etc/systemd/system/catalogue.services
-     
+
+  - name: daemon reload
+    ansible.builtin.daemon:
+      name: daemon-reload
+      state: reloaded
