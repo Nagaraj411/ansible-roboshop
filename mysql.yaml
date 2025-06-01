@@ -14,7 +14,6 @@
         name: mysql
         state: started
         enabled: true
-      tags: start
 
     - name: Copy MySQL Configuration File
       template:
