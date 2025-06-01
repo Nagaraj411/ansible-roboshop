@@ -1,6 +1,5 @@
 - name: configuring user server
-  hosts: local
-  connection: local
+  hosts: user
   become: yes
   tasks:
   - name: Disable the default nodejs module

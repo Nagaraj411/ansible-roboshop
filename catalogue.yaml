@@ -1,6 +1,5 @@
 - name: configuring catalogue server
-  hosts: local
-  connection: local
+  hosts: catalogue
   become: yes
   tasks:
   - name: Disable the default nodejs module

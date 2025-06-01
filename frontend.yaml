@@ -1,6 +1,5 @@
 - name: configuration frontend server
-  hosts: local
-  connection: local
+  hosts: frontend
   become: yes
   tasks:
   - name: Disable the default nodejs module

@@ -1,6 +1,5 @@
 - name: configuring cart server
-  hosts: local
-  connection: local
+  hosts: cart
   become: yes
   tasks:
   - name: Disable the default nodejs module
