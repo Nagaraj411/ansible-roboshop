@@ -4,27 +4,12 @@
   become: true
   tasks:
     - name: Install MySQL Server
-      apt:
-        name: mysql-server
+      ansible.builtin.dnf:
+        name: mysql-Server
         state: present
-      tags: install
 
-    - name: Start MySQL Service
-      service:
-        name: mysql
+    - name: enable and start MySQL service
+      ansible.builtin.service:
+        name: mysqld
         state: started
-        enabled: true
-
-    - name: Copy MySQL Configuration File
-      template:
-        src: my.cnf.j2
-        dest: /etc/mysql/my.cnf
-      notify:
-        - Restart MySQL Service
-      tags: config
-
-  handlers:
-    - name: Restart MySQL Service
-      service:
-        name: mysql
-        state: restarted
+        enabled: yes
