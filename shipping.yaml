@@ -73,9 +73,9 @@
     - import
     community.mysql.mysql_db:
       name: all
-      #login_user: root
-      #login_password: RoboShop@1
-      login_host: localhost
+      #login_user: root   # run this task when instance is created
+      #login_password: RoboShop@1  # run this task when instance is created
+      login_host: localhost # when instance is created, mysql.devops84.shop
       state: import
       target: "{{ item }}"
     loop:
