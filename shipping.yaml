@@ -56,14 +56,14 @@
       state: started
       enabled: yes
 
-  - name: import data
+  # - name: import data
 
-    loop: 
-    - /app/db/schema.sql
-    - /app/db/app-user.sql
-    - /app/db/master-data.sql
+  #   loop: 
+  #   - /app/db/schema.sql
+  #   - /app/db/app-user.sql
+  #   - /app/db/master-data.sql
 
-  - name: restart shipping service
-    ansible.builtin.systemd:
-      name: shipping
-      state: restarted
+  # - name: restart shipping service
+  #   ansible.builtin.systemd:
+  #     name: shipping
+  #     state: restarted
