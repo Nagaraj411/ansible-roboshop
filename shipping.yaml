@@ -35,3 +35,13 @@
     ansible.builtin.command: mvn clean package
     args: # this command runs the maven clean package command to build the application
       chdir: /app  # change directory to /app before running the command & come put
+
+  - name: rename jar file
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar 
+    args:
+      chdir: /app  # change directory to /app before running the command
+    
+  - name: copy shipping service file
+    ansible.builtin.copy:
+      src: shipping.service
+      dest: /etc/systemd/system/shipping.service
