@@ -81,7 +81,7 @@
       - /app/db/app-user.sql
       - /app/db/master-data.sql
 
-    - name: restart shipping
+  - name: restart shipping
     tags:
       - import
     ansible.builtin.service:
