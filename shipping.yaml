@@ -46,7 +46,7 @@
   - name: install maven dependencies
     ansible.builtin.command: mvn clean package
     args: # this command runs the maven clean package command to build the application
-      chdir: /app  # change directory to /app before running the command & come put
+      chdir: /app  # change directory to /app before running the command in line 47 & come put
 
   - name: rename jar file
     ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar 
@@ -68,22 +68,24 @@
       state: started
       enabled: yes
 
-  - name: Import schema files
+  - name: import data
+    tags:
+    - import
     community.mysql.mysql_db:
       name: all
       login_user: root
       login_password: RoboShop@1
-      login_host: localhost
+      login_host: mysql.devops84.shop
       state: import
       target: "{{ item }}"
     loop:
-      - /app/db/schema.sql
-      - /app/db/app-user.sql
-      - /app/db/master-data.sql
+    - /app/db/schema.sql
+    - /app/db/app-user.sql
+    - /app/db/master-data.sql
 
   - name: restart shipping
     tags:
-      - import
+    - import
     ansible.builtin.service:
-      name: shipping
       state: restarted
+      name: shipping
