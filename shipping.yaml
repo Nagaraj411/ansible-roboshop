@@ -8,25 +8,25 @@
       name: maven
       state: intalled
 
-  - name: create app directory
-    ansible.builtin:file:  # create a directory for the application
-      path: /app
-      state: directory
-      
-  - name: add system user
-    ansible.builtin.user: # create a system cart for the application
-      name: roboshop
-      shell: /sbin/nologin
-      home: /app
-      system: true
+  # - name: create app directory
+  #   ansible.builtin:file:  # create a directory for the application
+  #     path: /app
+  #     state: directory
 
-  - name: download shipping code
-    ansible.builtin.get_url:
-      url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip
-      dest: /tmp/shipping.zip
+  # - name: add system user
+  #   ansible.builtin.user: # create a system cart for the application
+  #     name: roboshop
+  #     shell: /sbin/nologin
+  #     home: /app
+  #     system: true
 
-  - name: extract or unzip shipping code
-    ansible.builtin.unarchive:
-      src: /tmp/shipping.zip
-      dest: /app
-      remote_src: yes # this means the source file is already on the remote cart server 
+  # - name: download shipping code
+  #   ansible.builtin.get_url:
+  #     url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip
+  #     dest: /tmp/shipping.zip
+
+  # - name: extract or unzip shipping code
+  #   ansible.builtin.unarchive:
+  #     src: /tmp/shipping.zip
+  #     dest: /app
+  #     remote_src: yes # this means the source file is already on the remote cart server 
