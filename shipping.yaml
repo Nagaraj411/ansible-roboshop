@@ -1,7 +1,7 @@
 - name: configuration shipping server
   hosts: local
   connection: local
-  become: true
+  become: yes
   tasks:
   - name: install maven and mysq
     ansible.builtin.dnf:
