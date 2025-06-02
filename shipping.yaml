@@ -84,6 +84,6 @@
     - name: restart shipping
     tags:
       - import
-    ansible.builtin.systemd:
+    ansible.builtin.service:
         name: shipping
         state: restarted
