@@ -9,7 +9,7 @@
       state: intalled
 
   - name: create app directory
-    ansible.builtin:file:  # create a directory for the application
+    ansible.builtin.file:  # create a directory for the application
       path: /app
       state: directory
       
