@@ -3,10 +3,22 @@
   connection: local
   become: true
   tasks:
-  - name: install maven
+  - name: install maven and mysq
     ansible.builtin.dnf:
-      name: maven
+      name: "{{ item }}"  # install maven package & mysql
       state: installed
+    loop:
+    - maven
+    - mysql
+
+  - name: install PyMySQL and cryptography 
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9   # use pip3.9 to install the required python packages
+    loop:
+    - cryptography # cryptography is used for secure communication
+    - PyMySQL # PyMySQL is a MySQL client for Python
+    # pip3.9 package management tool for Python 3.9
 
   - name: create app directory
     ansible.builtin.file:  # create a directory for the application
@@ -69,7 +81,9 @@
     - /app/db/app-user.sql
     - /app/db/master-data.sql
 
-  - name: restart shipping service
+    - name: restart shipping
+    tags:
+      - import
     ansible.builtin.systemd:
-      name: shipping
-      state: restarted
+        name: shipping
+        state: restarted
