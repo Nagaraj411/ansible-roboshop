@@ -69,6 +69,8 @@
       enabled: yes
 
   - name: import data
+    tags:
+      - import
     ansible.mysql.mysql_db:
       name: all
       login_user: root
