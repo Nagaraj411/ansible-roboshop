@@ -58,12 +58,13 @@
 
   - name: import data
     ansible.mysql.mysql_db:
+      name: all
       login_user: root
-      login_password: "{{ mysql_root_password }}"
-      name: shipping
+      login_password: RoboShop@1
+      login_host: localhost # mysql.devops84.shop
       state: import
-      target: /app/db/shipping.sql
-    loop: 
+      target: "{{ item }}"
+    loop:
     - /app/db/schema.sql
     - /app/db/app-user.sql
     - /app/db/master-data.sql
