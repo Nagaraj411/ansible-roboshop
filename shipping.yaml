@@ -57,7 +57,12 @@
       enabled: yes
 
   - name: import data
-
+    ansible.mysql.mysql_db:
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      name: shipping
+      state: import
+      target: /app/db/shipping.sql
     loop: 
     - /app/db/schema.sql
     - /app/db/app-user.sql
