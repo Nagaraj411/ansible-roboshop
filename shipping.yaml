@@ -6,7 +6,7 @@
   - name: install maven
     ansible.builtin.dnf:
       name: maven
-      state: intalled
+      state: installed
 
   - name: create app directory
     ansible.builtin.file:  # create a directory for the application
