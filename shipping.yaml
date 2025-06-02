@@ -68,16 +68,14 @@
       state: started
       enabled: yes
 
-  - name: import data
-    tags:
-      - import
+  - name: Import schema files
     community.mysql.mysql_db:
-      name: all
-      login_user: root
-      login_password: RoboShop@1
-      login_host: localhost # mysql.devops84.shop
+      name: your_database
       state: import
       target: "{{ item }}"
+      login_user: root
+      login_password: your_root_password
+      login_host: localhost
     loop:
       - /app/db/schema.sql
       - /app/db/app-user.sql
@@ -87,5 +85,5 @@
     tags:
       - import
     ansible.builtin.service:
-        name: shipping
-        state: restarted
+      name: shipping
+      state: restarted
