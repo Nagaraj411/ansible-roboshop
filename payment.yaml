@@ -32,7 +32,7 @@
     ansible.builtin.unarchive:
       src: /tmp/payment.zip
       dest: /app
-      remote: yes  # this means the source file is already on the remote payment server
+      remote_src: yes  # this means the source file is already on the remote payment server
 
   - name: install dependencies
     ansible.builtin.pip:
