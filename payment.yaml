@@ -29,11 +29,11 @@
       url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip
       dest: /tmp/payment.zip
   
-  - name: extract payment code
+  - name: extract or unzip payment code
     ansible.builtin.unarchive:
       src: /tmp/payment.zip
       dest: /app
-      remote_src: yes
+      remote: yes  # this means the source file is already on the remote payment server
 
   - name: install dependencies
     ansible.builtin.pip:
