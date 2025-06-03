@@ -1,6 +1,5 @@
 - name: configuration shipping server
-  hosts: local
-  connection: local
+  hosts: shipping
   become: yes
   tasks:
   - name: install maven and mysq
@@ -45,7 +44,7 @@
 
   - name: install maven dependencies
     ansible.builtin.command: mvn clean package
-    args: # this command runs the maven clean package command to build the application
+    args: # this argument command runs the maven clean package command to build the application
       chdir: /app  # change directory to /app before running the command in line 47 & come put
 
   - name: rename jar file
@@ -69,13 +68,13 @@
       enabled: yes
 
   - name: import data
-    tags:
+    tags: # import spacific data into MySQL database
     - import
     community.mysql.mysql_db:
       name: all
-      #login_user: root             # run this task when instance is created
-      #login_password: RoboShop@1   # run this task when instance is created
-      login_host: localhost         # when instance is created, mysql.devops84.shop
+      login_user: root             # run this task when instance is created
+      login_password: RoboShop@1   # run this task when instance is created
+      login_host: mysql.devops84.shop        # when instance is created, mysql.devops84.shop
       state: import
       target: "{{ item }}"
     loop:
@@ -84,7 +83,7 @@
     - /app/db/master-data.sql
 
   - name: restart shipping
-    tags:
+    tags: # restart the shipping service after importing data
     - import
     ansible.builtin.service:
       state: restarted

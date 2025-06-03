@@ -1,6 +1,5 @@
 - name: configuration shipping server
-  hosts: local
-  connection: local
+  hosts: payment
   become: yes
   tasks:
   - name: install python3 packages

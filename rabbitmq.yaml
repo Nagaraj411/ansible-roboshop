@@ -1,6 +1,5 @@
 - name: configuration shipping server
-  hosts: local
-  connection: local
+  hosts: rabbitmq
   become: yes
   tasks:
   - name: cop rabbitmq repo file
